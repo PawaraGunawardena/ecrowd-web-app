@@ -29,6 +29,13 @@ class User extends Controller{
 
     }
 
+    function register(){
+
+//        $this->view->userList = $this->model->userList();
+        $this->view->render('user/register');
+
+    }
+
     public function create(){
         $data = array();
 
@@ -43,6 +50,7 @@ class User extends Controller{
 
         $this->model->create($data);
         header('location:'.URL.'user');
+//        header('location:'.URL.'login');
     }
 
     public function edit($id){

@@ -43,7 +43,7 @@
             <br/>
             <?php if (Session::get('loggedIn') == false) {?>
                 <a href="index">Index</a>
-                <a href="register">Register</a>
+                <a href="<?php echo URL; ?>register">Register</a>
                 <a href="help">Help</a>
             <?php } ?>
 <!--            <a href="login">Login</a>-->
