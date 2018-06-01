@@ -1,11 +1,23 @@
-<h1>Users</h1>
+<div style="padding: 100px;">
+
+<h1>Add Users At Admin Level</h1>
 
 <form action = "<?php echo URL;?>user/create" method="POST">
-    <label>Username</label>  <input type="text" name="username"><br/><br/>
-    <label>Email</label>  <input type="text" name="email"><br/><br/>
-    <label>First name</label>  <input type="text" name="first_name"><br/><br/>
-    <label>Last name</label>  <input type="text" name="last_name"><br/><br/>
-    <label>Password</label>  <input type="password" name="password"><br/><br/>
+    <label>Username</label>
+    <input type="text" name="username"><br/><br/>
+
+    <label>Email</label>
+    <input type="text" name="email"><br/><br/>
+
+    <label>First name</label>
+    <input type="text" name="first_name"><br/><br/>
+
+    <label>Last name</label>
+    <input type="text" name="last_name"><br/><br/>
+
+    <label>Password</label>
+    <input type="password" name="password"><br/><br/>
+
     <label>Role</label>
         <select name="role">
             <option value="user">General User</option>
@@ -14,14 +26,14 @@
     <label>&nbsp</label> <input type="submit" value="Add">
 </form>
 
-<hr/>
+    <h2>Edit Or Delete User By Admin Privileges</h2>
 
 <table>
     <?php
         foreach($this->userList as $key => $value){
             echo '<tr>';
 
-            echo ' <td> '.$value['user_id'].' </td> ';
+echo '';
             echo '<td>'.$value['username'].'</td>';
             echo '<td>'.$value['first_name'].'</td>';
             echo '<td>'.$value['last_name'].'</td>';
@@ -29,9 +41,10 @@
             echo '<td>'.$value['role'].'</td>';
 
             echo '<td> 
-                <a href='.URL.'user/edit/'.$value['user_id'].'>Edit</a>
-                <a href='.URL.'user/delete/'.$value['user_id'].'>Delete</a></td>';
+                <a href='.URL.'user/edit/'.$value['username'].'>Edit</a>
+                <a href='.URL.'user/delete/'.$value['username'].'>Delete</a></td>';
             echo '</tr>';
+            echo '</div>';
         }
     ?>
 

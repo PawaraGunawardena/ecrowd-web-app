@@ -6,7 +6,7 @@ define('LIBS', 'libs/');
 
 define('DB_TYPE','mysql');
 define('DB_HOST','localhost');
-define('DB_NAME','ecrowd');
+define('DB_NAME','ecrowd_test');
 define('DB_USER','root');
 define('DB_PASS','');
 

@@ -9,7 +9,7 @@ class Help_Model extends Model{
 
     function __construct()
     {
-        echo '<br>Inside Help Model';
+//        echo '<br>Inside Help Model';
     }
 
     function blah(){

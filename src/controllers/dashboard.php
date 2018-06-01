@@ -24,7 +24,7 @@ class Dashboard extends Controller{
 
     function index(){
 
-        echo 'index, controller dashboard';
+//        echo 'index, controller dashboard';
         $this->view->render('dashboard/index');
 
     }

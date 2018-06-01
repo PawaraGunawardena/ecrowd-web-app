@@ -24,23 +24,27 @@ class Login_Model extends Model{
 //
 
 
-        $statement= $this -> database->prepare("SELECT user_id,
-              username, role FROM user WHERE username = :username AND password = :password");
+        $statement= $this -> database->prepare("SELECT 
+              username, email, role 
+              FROM user WHERE username = :username AND password = :password");
 
         $statement->execute(array(
             ':username' => $_POST['username'],
-            ':password'=>Hash::create('md5',$_POST['password'],HASH_PASSWORD_KEY)
+            ':password'=>$_POST['password']
         ));
-
+//        echo $_POST['username'];return false;
         $data = $statement->  fetch();
         $role = $data['role'];
 
         $count = $statement -> rowCount();
+//        echo $count;return false;
+
         if($count==1){
             Session::init();
             Session::set('role', $role);
             Session::set('loggedIn', true);
-            header('location: ../dashboard');
+            Session::set('loggedUser',$_POST['username']);
+            header('location: ../index');
         }else{
             header('location: ../login');
         }

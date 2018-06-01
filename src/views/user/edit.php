@@ -1,11 +1,12 @@
-<h1>User Edit</h1>
-<?php //print_r($this->user);echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" ;
-//echo $this->user['username']?>
+<div style="padding: 300px;">
+<h1>User Details Edit</h1>
 
 
-<form action = "<?php echo URL;?>user/editSave/<?php echo $this->user['user_id'];?>" method="POST">
 
-    <label>Username</label>  <input type="text" name="username" value="<?php echo $this->user['username']?>"><br/><br/>
+
+<form action = "<?php echo URL;?>user/editSave/<?php echo $this->user['username'];?>" method="POST">
+
+<!--    <label>Username</label>  <input type="text" name="username" value="--><?php //echo $this->user['username']?><!--"><br/><br/>-->
     <label>Email</label>  <input type="text" name="email" value="<?php echo $this->user['email']?>"><br/><br/>
     <label>First name</label>  <input type="text" name="first_name" value="<?php echo $this->user['first_name']?>"><br/><br/>
     <label>Last name</label>  <input type="text" name="last_name" value="<?php echo $this->user['last_name']?>"><br/><br/>

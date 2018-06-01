@@ -53,17 +53,17 @@ class User extends Controller{
 //        header('location:'.URL.'login');
     }
 
-    public function edit($id){
+    public function edit($username){
         //individual user
-        $this->view->user = $this->model->userSingleList($id);
+        $this->view->user = $this->model->userSingleList($username);
         $this->view->render('user/edit');
     }
 
-    public function editSave($id){
+    public function editSave($username){
         $data = array();
 
-        $data['user_id'] = $id;
-        $data['username'] = $_POST['username'];
+
+        $data['username'] = $username;
         $data['email' ]= $_POST['email'];
         $data['first_name'] = $_POST['first_name'];
         $data['last_name' ]= $_POST['last_name'];
@@ -72,12 +72,12 @@ class User extends Controller{
 
         //@TODO Error checking
 
-        $this->model->editSave($data);
+        $this->model->editSave($data, $username);
         header('location:'.URL.'user');
     }
 
-    public function delete($id){
-        $this->model->delete($id);
+    public function delete($username){
+        $this->model->delete($username);
         header('location:'.URL.'user');
     }
 }

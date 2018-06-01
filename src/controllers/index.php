@@ -14,7 +14,7 @@ class Index extends Controller{
 
     function index(){
 
-        echo 'index, controller index';
+//        echo 'index, controller index';
         $this->view->render('index/index');
     }
 }

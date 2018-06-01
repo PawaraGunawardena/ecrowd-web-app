@@ -11,7 +11,7 @@ class User_Model extends Model{
     function __construct()
     {
         parent:: __construct();
-        echo '<br>Inside User Model<br>';
+//        echo '<br>Inside User Model<br>';
     }
 
     public function userList(){
@@ -22,10 +22,10 @@ class User_Model extends Model{
 //        $statement ->execute();
 //        return $statement->fetchAll();
 
-        return $this->database->select('SELECT user_id, username, email, first_name, last_name, role FROM user');
+        return $this->database->select('SELECT username, email, first_name, last_name, role FROM user');
     }
 
-    public function userSingleList($id){
+    public function userSingleList($username){
 //        $statement = $this -> database -> prepare(
 //            'SELECT user_id, username, email, first_name, last_name, role FROM user WHERE user_id =:user_id'
 //        );
@@ -39,8 +39,8 @@ class User_Model extends Model{
          * single row
         */
         return $this->database->selectOne(
-            'SELECT user_id, username, email, first_name, last_name, role
-                      FROM user WHERE user_id =:user_id', array(':user_id' => $id));
+            'SELECT username, email, first_name, last_name, role
+                      FROM user WHERE username =:username', array(':username' => $username));
     }
 
     public function create($data){
@@ -70,54 +70,54 @@ class User_Model extends Model{
             'password' => Hash::create('md5',$data['password'],HASH_PASSWORD_KEY),
             'role'=>$data['role']
         ));
-        echo $data['username'];
+//        echo $data['username'];
     }
 
 
-    public function delete($id){
+    public function delete($username){
 //        $statement = $this->database->prepare('DELETE FROM user WHERE user_id =:user_id');
 //        $statement->execute(array(
 //            ':user_id' =>$id
 //        ));
 
-        $result = $this->database->selectOne('SELECT role FROM user WHERE id = :id',
-            array(':user_id' => $id));
+        $result = $this->database->selectOne('SELECT role FROM user WHERE username = :username',
+            array(':username' => $username));
 
         if ($result['role'] == 'owner')
             return false;
 
-        $this->database->delete('user', "user_id = '$id'");
+        $this->database->delete('user', "username = '$username'");
     }
-    public function editSave($data){
-//        echo $data['username'];
-//        echo $data['email'];
-//        echo $data['first_name'];
-//        echo $data['last_name'];
-//        echo $data['password'];
-//        echo $data['role'];
+    public function editSave($data, $username){
+        echo $data['username'];
+        echo $data['email'];
+        echo $data['first_name'];
+        echo $data['last_name'];
 
-//        $statement = $this -> database -> prepare(
-//            'UPDATE user SET username = :username, email = :email, first_name = :first_name
-//                              , last_name = :last_name ,password = :password, role = :role
-//                              WHERE user_id = :user_id')                      ;
-//        $statement ->execute(array(
-//            ':user_id' => $data['user_id'],
-//            ':username' => $data['username'],
-//            ':email' => $data['email'],
-//            ':first_name' => $data['first_name'],
-//            ':last_name' => $data['last_name'],
-//            ':password' =>Hash::create('md5',$data['password'],HASH_PASSWORD_KEY),
-//            ':role'=>$data['role']
-//        ));
+        echo $data['role'];
 
-        $postData = array(
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'password' => Hash::create('md5',$data['password'],HASH_PASSWORD_KEY),
-            'role'=>$data['role']
-        );
+        $statement = $this -> database -> prepare(
+            'UPDATE user SET username = :username, email = :email, first_name = :first_name
+                              , last_name = :last_name ,password = :password, role = :role
+                              WHERE username = :username')                      ;
+        $statement ->execute(array(
+            ':username' => $data['username'],
 
-        $this->database->update('user ', $postData, "`user_id` = {$data['user_id']}");
+            ':email' => $data['email'],
+            ':first_name' => $data['first_name'],
+            ':last_name' => $data['last_name'],
+            ':password' =>Hash::create('md5',$data['password'],HASH_PASSWORD_KEY),
+            ':role'=>$data['role']
+        ));
+
+//        $postData = array(
+//            'username' => $data['username'],
+//            'email' => $data['email'],
+//            'first_name' => $data['first_name'],
+//            'last_name' => $data['last_name'],
+//            'password' => Hash::create('md5',$data['password'],HASH_PASSWORD_KEY),
+//            'role'=>$data['role']
+//        );
+//
+//        $this->database->update('user ', $postData, "`username` = $username");
     }}

@@ -13,8 +13,8 @@ class Login extends Controller{
     }
 
     function index(){
-        echo Hash::create('md5','sword',HASH_PASSWORD_KEY);
-        echo '<br> Crazy';
+//        echo Hash::create('md5','sword',HASH_PASSWORD_KEY);
+//        echo '<br> Crazy';
 //        require 'models/login_model.php';
 //        $model = new Login_Model();
 //        echo 'index, controller login';

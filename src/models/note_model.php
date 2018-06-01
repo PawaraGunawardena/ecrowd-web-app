@@ -11,7 +11,7 @@ class Note_Model extends Model{
     function __construct()
     {
         parent:: __construct();
-        echo '<br>Inside User Model<br>';
+//        echo '<br>Inside User Model<br>';
     }
 
     public function noteList(){
@@ -70,7 +70,7 @@ class Note_Model extends Model{
             'password' => Hash::create('md5',$data['password'],HASH_PASSWORD_KEY),
             'role'=>$data['role']
         ));
-        echo $data['username'];
+//        echo $data['username'];
     }
 
 

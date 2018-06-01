@@ -10,6 +10,7 @@ class Database extends PDO{
 
     function __construct($DB_TYPE,$DB_HOST,$DB_NAME,$DB_USER,$DB_PASS){
         parent::__construct($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME,$DB_USER,$DB_PASS);
+
 //        echo ' <br>Database Main File<br>';
 
     }
@@ -20,7 +21,8 @@ class Database extends PDO{
     public function select($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC)
     {
         $sth = $this->prepare($sql);
-        foreach ($array as $key => $value) {echo $value;
+        foreach ($array as $key => $value) {
+//            echo $value;
             $sth->bindValue("$key", $value);
         }
 // die;
@@ -35,7 +37,8 @@ class Database extends PDO{
     public function selectOne($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC)
     {
         $sth = $this->prepare($sql);
-        foreach ($array as $key => $value) {echo $value;
+        foreach ($array as $key => $value) {
+//            echo $value;
             $sth->bindValue("$key", $value);
         }
 // die;
@@ -53,7 +56,7 @@ class Database extends PDO{
         $fieldNames = implode('`, `', array_keys($data));
         $fieldValues = ':' . implode(' ,:', array_keys($data));
 
-        echo "INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)";
+//        echo "INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)";
 
         $sth = $this->prepare("INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)");
 
@@ -93,6 +96,10 @@ class Database extends PDO{
     public function delete($table, $where, $limit = 1)
     {
         return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
+    }
+
+    public function create_table($query){
+        return $this->exec($query);
     }
 
 }

@@ -19,12 +19,18 @@ body {
 }
 
 #footer {
-    background: #12407f;
+    /*background: #12407f;*/
     color: #fff;
     padding: 20px;
     border-top: 4px solid #436fac;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+
+    /*position: relative;*/
+    /*bottom: 10px;*/
+    /*width: 100%;*/
+    /*background: #d4d4d4;*/
+
 }
 
 /* Links */
@@ -72,7 +78,14 @@ form br {clear: left;}
 
 
 
+#footer {
 
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    background: #d4d4d4;
+
+}
 
 
 

@@ -11,7 +11,6 @@ $(function(){
             //$('#listInserts').append('<div>' + o[i].text + '<a class="del" rel="'+o[i].id+'href="#">X</a></div>');
             $('#listInserts').append('<div>' + o[i].text + '<a class="del" rel="'+o[i].id+'" href="#">X</a></div>');
         }
-
        // $('del').live('click', function()
         $('#listInserts').on('click', '.del', function(){
             delItem = $(this);
@@ -25,19 +24,12 @@ $(function(){
 
             }, 'json');
 
-
-
-
-
-
             //
             // return false;
         // });
 
             return false;
         });
-
-
     },'json');
 
 
